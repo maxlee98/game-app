@@ -76,14 +76,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topRowContainer: {
-    position: "absolute",
+    flex: 1,
     top: 10,
     right: 10,
   },
   bottomRowContainer: {
-    flex: 1,
+    flex: 6,
     backgroundColor: "#f7f7f7",
-    position: "absolute",
+    // position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
