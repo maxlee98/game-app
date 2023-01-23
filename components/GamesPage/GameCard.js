@@ -1,9 +1,14 @@
 import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export default function GameCard(props) {
+  const navigation = useNavigation();
   return (
-    <View style={styles.cardContainer}>
+    <TouchableOpacity
+      style={styles.cardContainer}
+      onPress={() => navigation.navigate("GameDetail", props)}
+    >
       <View style={styles.cardImageContainer}>
         <Image source={props.image} style={styles.cardImage} />
       </View>
@@ -11,7 +16,7 @@ export default function GameCard(props) {
         <Text style={styles.cardTitle}>{props.title}</Text>
         <Text style={styles.cardDescription}>{props.description}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 

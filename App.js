@@ -1,14 +1,34 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import SettingsPage from "./components/SettingsPage/SettingsPage";
 import GamesPage from "./components/GamesPage/GamesPage";
 import HomePage from "./components/HomePage/HomePage";
 import ProfileIcon from "./components/ProfileIcon";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import GameDetail from "./components/GamesPage/GameDetail";
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+function GameStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="GamePage"
+        component={GamesPage}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="GameDetail"
+        component={GameDetail}
+        options={{ headerShown: false }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   return (
@@ -38,7 +58,7 @@ export default function App() {
             />
             <Tab.Screen
               name="Games"
-              component={GamesPage}
+              component={GameStack}
               options={{
                 tabBarLabel: "Game",
                 tabBarIcon: ({ color, size }) => (

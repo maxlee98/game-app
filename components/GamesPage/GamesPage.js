@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import GameCard from "../GameCard";
+import GameCard from "./GameCard";
 
 export default function GamesPage() {
   const Games = [
