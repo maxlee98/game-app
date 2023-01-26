@@ -1,38 +1,40 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import { gameData } from "./data/gamesData";
 import GameCard from "./GameCard";
 
 export default function GamesPage() {
-  const Games = [
-    {
-      image: require("../../assets/Games/dice.jpg"),
-      title: "Game1",
-      description: "Description1",
-    },
-    {
-      image: require("../../assets/Games/boardGame.jpg"),
-      title: "Game2",
-      description: "Description2",
-    },
-    {
-      image: require("../../assets/Games/pokerCard.jpg"),
-      title: "Game3",
-      description: "Description3",
-    },
-  ];
+  const Games = gameData;
   return (
-    <View style={styles.container}>
-      {Games.map((game) => (
+    <FlatList
+      data={Games}
+      keyExtractor={(item) => item.id}
+      renderItem={({ item }) => (
         <GameCard
-          image={game.image}
-          title={game.title}
-          description={game.description}
+          image={item.image}
+          title={item.title}
+          description={item.description}
         />
-      ))}
-      <Text>Games Page</Text>
-    </View>
+      )}
+    />
   );
 }
+
+// export default function GamesPage() {
+//   const Games = gameData;
+//   return (
+//     <View style={styles.container}>
+//       {Games.map((game) => (
+//         <GameCard
+//           image={game.image}
+//           title={game.title}
+//           description={game.description}
+//         />
+//       ))}
+//       <Text>Games Page</Text>
+//     </View>
+//   );
+// }
 
 const styles = StyleSheet.create({
   container: {
